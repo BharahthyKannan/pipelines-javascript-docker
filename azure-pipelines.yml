@@ -19,7 +19,6 @@ stages:
     displayName: Build
     pool:
       name: MyHostedVM
-      demands: Docker
     steps:
     - task: Docker@2
       displayName: Build an image
