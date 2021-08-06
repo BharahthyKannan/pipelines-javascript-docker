@@ -23,6 +23,6 @@ stages:
       - task: Docker@2
         inputs:
           containerRegistry: 'acrconnection'
-          repository: 'infymscontainers'
+          repository: 'infymstestcontainers'
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
