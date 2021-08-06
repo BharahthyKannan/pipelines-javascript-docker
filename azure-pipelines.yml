@@ -28,7 +28,5 @@ stages:
           Dockerfile: '**/Dockerfile'
       - script: |
           echo 'start installing'
-          wget https://github.com/aquasecurity/trivy/releases/download/v$(trivyVersion)/trivy_$(trivyVersion)_Linux-64bit.deb
-          sudo dpkg -i trivy_$(trivyVersion)_Linux-64bit.deb
-          trivy -v
+          sudo apt-get install rpm
         displayName: 'Download and install Trivy'
