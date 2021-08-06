@@ -32,5 +32,6 @@ stages:
         containerRegistry: 'acrconnection'
         repository: 'infymscontainers'
         command: 'push'
-        tags: $(tag)
+        tags: |
+          $(tag)
     
