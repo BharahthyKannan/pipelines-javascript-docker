@@ -33,5 +33,5 @@ stages:
         repository: 'infymscontainers'
         command: 'push'
         tags: |
-          $(tag)
+          '$(Build.BuildId)'
     
