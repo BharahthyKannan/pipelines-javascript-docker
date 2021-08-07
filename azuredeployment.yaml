@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bk-poc-deployment
+  namespace: poctest
+  labels:
+    app: bk-poc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bk-poc
+  template:
+    metadata:
+      labels:
+        app: bk-poc
+    spec:
+      containers:
+      - name: bkinfymstestcontainers 
+        image: infymscontainers.azurecr.io/infymstestcontainers:130
+        ports:
+        - containerPort: 80
