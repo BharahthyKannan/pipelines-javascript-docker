@@ -26,12 +26,14 @@ stages:
           repository: 'infymstestcontainers'
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
-      - script: |
-          echo 'start scanning'
-        displayName: 'Trivy Scan'
       - task: CmdLine@2
+        displayName: Trivy Scan
         inputs:
           script: |
-            echo Write your commands here
+            echo Scanning Started
+            echo $(imageName)
+            echo $(tag)
+            echo check variable completed 
+            trivy image --exit-code 0 --severity LOW,MEDIUM python:3.4-alpine
+            trivy image --exit-code 1 --severity HIGH,CRITICAL python:3.4-alpine
             
-            echo Hello world
