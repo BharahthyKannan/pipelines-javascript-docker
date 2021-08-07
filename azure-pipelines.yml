@@ -34,6 +34,6 @@ stages:
             echo $(imageName)
             echo $(tag)
             echo check variable completed 
-            trivy image --exit-code 0 --severity LOW,MEDIUM python:3.4-alpine
-            trivy image --exit-code 0 --severity HIGH,CRITICAL python:3.4-alpine
+            trivy image --exit-code 0 --severity LOW,MEDIUM $(imageName):$(tag)
+            trivy image --exit-code 1 --severity HIGH,CRITICAL $(imageName):$(tag)
             
