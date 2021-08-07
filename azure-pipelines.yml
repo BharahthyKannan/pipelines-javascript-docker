@@ -41,8 +41,9 @@ stages:
             #trivy image --severity LOW,MEDIUM --format template --template "@junit.tpl" -o junit-report-low-med.xml  $(registryName)/$(imageName):$(tag
             #trivy image --severity LOW,MEDIUM --format template --template "@junit.tpl" -o junit-report-low-med.xml  infymscontainers.azurecr.io/infymstestcontainers:111
             #trivy image --severity CRITICAL,HIGH --format template --template "@junit.tpl" -o junit-report-high-critical.xml  infymscontainers.azurecr.io/infymstestcontainers:111
+            #below exit code can be updated as pre the need
             trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(imageName):$(tag)
-            trivy image --exit-code 1 --severity HIGH,CRITICAL $(registryName)/$(imageName):$(tag)         
+            trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(imageName):$(tag)         
       - task: PublishTestResults@2
         enabled: false
         inputs:
