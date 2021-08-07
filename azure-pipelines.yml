@@ -34,5 +34,7 @@ stages:
             echo $(registryName)
             echo $(imageName)
             echo $(tag)
+            echo $(registryName)/$(imageName):$(tag)
             echo check variable completed 
+            trivy image $(registryName)/$(imageName):$(tag)
             
