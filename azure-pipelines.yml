@@ -23,7 +23,7 @@ stages:
       - task: Docker@2
         inputs:
           containerRegistry: 'acrconnection'
-          repository: 'infymstestcontainers'
+          repository: $(imageName)
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
       - task: CmdLine@2
@@ -35,5 +35,5 @@ stages:
             echo $(tag)
             echo check variable completed 
             trivy image --exit-code 0 --severity LOW,MEDIUM python:3.4-alpine
-            trivy image --exit-code 1 --severity HIGH,CRITICAL python:3.4-alpine
+            trivy image --exit-code 0 --severity HIGH,CRITICAL python:3.4-alpine
             
