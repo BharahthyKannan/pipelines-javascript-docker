@@ -62,4 +62,10 @@ stages:
           mergeTestResults: true
           failTaskOnFailedTests: false
         condition: 'always()'
+      - task: KubernetesManifest@0
+        inputs:
+          action: 'deploy'
+          kubernetesServiceConnection: 'aksconnectoin'
+          namespace: 'poctest'
+          containers: $(registryName)/$(imageName):$(tag)
       
