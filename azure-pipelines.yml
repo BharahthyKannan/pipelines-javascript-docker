@@ -65,13 +65,3 @@ stages:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: drop'
       
-      - task: Kubernetes@1
-        displayName: 'deploy to kubernetes via kubectl'
-        inputs:
-          connectionType: 'Kubernetes Service Connection'
-          kubernetesServiceEndpoint: 'aksconnectoin'
-          namespace: 'poctest'
-          command: 'apply'
-          secretType: 'dockerRegistry'
-          containerRegistryType: 'Container Registry'
-          dockerRegistryEndpoint: 'acrconnection'
