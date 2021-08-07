@@ -31,9 +31,8 @@ stages:
         inputs:
           script: |
             echo Scanning Started
+            echo $(registryName)
             echo $(imageName)
             echo $(tag)
             echo check variable completed 
-            trivy image --exit-code 0 --severity LOW,MEDIUM $(imageName):$(tag)
-            trivy image --exit-code 1 --severity HIGH,CRITICAL $(imageName):$(tag)
             
