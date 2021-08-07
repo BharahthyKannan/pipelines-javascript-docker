@@ -64,4 +64,15 @@ stages:
         condition: 'always()'
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: drop'
+      - task: Kubernetes@1
+        inputs:
+          connectionType: 'Kubernetes Service Connection'
+          kubernetesServiceEndpoint: 'aksconnectoin'
+          namespace: 'poctest'
+          command: 'apply'
+          secretType: 'dockerRegistry'
+          containerRegistryType: 'Container Registry'
+          dockerRegistryEndpoint: 'acrconnection'
+          secretName: 'pushsecret'
+          arguments: -f ./azuredeployment.yaml
       
