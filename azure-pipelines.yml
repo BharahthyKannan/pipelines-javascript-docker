@@ -38,5 +38,5 @@ stages:
             echo check variable completed 
              #trivy image $(registryName)/$(imageName):$(tag)#
             cat junit.tpl
-            trivy image --severity LOW,MEDIUM --format template --template "@junit.tpl" -o junit-report-low-med.xml  $(registryName)/$(imageName):$(tag
-            
+            #trivy image --severity LOW,MEDIUM --format template --template "@junit.tpl" -o junit-report-low-med.xml  $(registryName)/$(imageName):$(tag
+            trivy image --severity LOW,MEDIUM --format template --template "@junit.tpl" -o junit-report-low-med.xml  infymscontainers.azurecr.io/infymstestcontainers:111
