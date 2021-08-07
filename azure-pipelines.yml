@@ -62,10 +62,16 @@ stages:
           mergeTestResults: true
           failTaskOnFailedTests: false
         condition: 'always()'
-      - task: KubernetesManifest@0
-        inputs:
-          action: 'deploy'
-          kubernetesServiceConnection: 'aksconnectoin'
-          namespace: 'poctest'
-          containers: $(registryName)/$(imageName):$(tag)
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: drop'
       
+      - task: Kubernetes@1
+        displayName: 'deploy to kubernetes via kubectl'
+        inputs:
+          connectionType: 'Kubernetes Service Connection'
+          kubernetesServiceEndpoint: 'aksconnectoin'
+          namespace: 'poctest'
+          command: 'apply'
+          secretType: 'dockerRegistry'
+          containerRegistryType: 'Container Registry'
+          dockerRegistryEndpoint: 'acrconnection'
