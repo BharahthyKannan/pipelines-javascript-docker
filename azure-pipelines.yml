@@ -37,5 +37,5 @@ stages:
             echo $(registryName)/$(imageName):$(tag)
             echo check variable completed 
              #trivy image $(registryName)/$(imageName):$(tag)#
-            trivy image --severity LOW,MEDIUM --format template --template "@templates/junit.tpl" -o junit-report-low-med.xml
+            trivy image --severity LOW,MEDIUM --format template --template "@templates/junit.tpl" -o junit-report-low-med.xml $(registryName)/$(imageName):$(tag
             
